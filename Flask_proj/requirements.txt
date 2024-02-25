@@ -1,5 +1,0 @@
-pandas 
-flask 
-bs4
-requests
-
