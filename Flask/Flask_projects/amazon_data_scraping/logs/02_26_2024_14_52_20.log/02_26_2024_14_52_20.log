@@ -1,0 +1,8 @@
+[2024-02-26 14:52:20,130] 23 root - INFO data ingestion initiated
+[2024-02-26 14:53:32,772] 140 root - INFO 4 pages remaining 
+[2024-02-26 14:54:46,164] 140 root - INFO 3 pages remaining 
+[2024-02-26 14:55:58,820] 140 root - INFO 2 pages remaining 
+[2024-02-26 14:57:11,156] 140 root - INFO 1 pages remaining 
+[2024-02-26 14:58:22,803] 140 root - INFO 0 pages remaining 
+[2024-02-26 14:58:22,806] 149 root - INFO Ingesion of the data completed
+[2024-02-26 14:58:22,806] 151 root - INFO Saving Raw data in artifacts

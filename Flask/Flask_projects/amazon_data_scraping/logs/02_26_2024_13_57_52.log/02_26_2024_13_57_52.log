@@ -1,0 +1,7 @@
+[2024-02-26 13:57:52,059] 23 root - INFO data ingestion initiated
+[2024-02-26 13:59:03,520] 140 root - INFO 4 pages remaining 
+[2024-02-26 14:00:14,586] 140 root - INFO 3 pages remaining 
+[2024-02-26 14:01:25,273] 140 root - INFO 2 pages remaining 
+[2024-02-26 14:02:38,118] 140 root - INFO 1 pages remaining 
+[2024-02-26 14:03:50,754] 140 root - INFO 0 pages remaining 
+[2024-02-26 14:03:50,772] 149 root - INFO Ingesion of the data completed
