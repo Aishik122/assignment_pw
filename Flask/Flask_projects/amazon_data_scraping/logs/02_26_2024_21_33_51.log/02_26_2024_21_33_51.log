@@ -1,6 +1,0 @@
-[2024-02-26 21:33:51,418] 96 werkzeug - WARNING  * Debugger is active!
-[2024-02-26 21:33:51,421] 96 werkzeug - INFO  * Debugger PIN: 114-575-417
-[2024-02-26 21:33:55,957] 96 werkzeug - INFO 127.0.0.1 - - [26/Feb/2024 21:33:55] "[33mGET / HTTP/1.1[0m" 404 -
-[2024-02-26 21:34:02,892] 96 werkzeug - INFO 127.0.0.1 - - [26/Feb/2024 21:34:02] "[33mGET /home HTTP/1.1[0m" 404 -
-[2024-02-26 21:34:05,547] 96 werkzeug - INFO 127.0.0.1 - - [26/Feb/2024 21:34:05] "[33mGET / HTTP/1.1[0m" 404 -
-[2024-02-26 21:34:49,195] 96 werkzeug - INFO  * Detected change in 'D:\\PW_Data_science\\Flask\\Flask_projects\\amazon_data_scraping\\app.py', reloading

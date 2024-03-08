@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Upload</title>
+    <title>Home</title>
 </head>
 <body>
-    <h1>Link Upload</h1>
+    <h1>Welcome to the Home Page</h1>
+    <p>This is the home page of our website. You can upload a link below:</p>
     <form action="/process_link" method="post">
         <label for="link">Enter Link:</label>
         <input type="text" id="link" name="link" required>
         <button type="submit">Submit</button>
     </form>
+
+    <p>Or you can <a href="/amazon">view Amazon data</a> directly.</p>
 </body>
 </html>

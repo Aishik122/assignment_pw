@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Data</title>
+</head>
+<body>
+    <h1>Amazon Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <!-- Add more table headers if needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in amazon_data.iterrows() %}
+                <tr>
+                    <td>{{ row['Title'] }}</td>
+                    <!-- Add more table cells if needed -->
+                </tr>
+            {% endfor %}
+            {% if amazon_data.empty %}
+                <tr>
+                    <td colspan="1">No data available</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</body>
+</html>
