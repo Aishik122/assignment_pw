@@ -29,8 +29,8 @@ def amazon():
 
 def read_amazon_data():
     # Read the CSV file
-    amazon_data = pd.read_csv(r'\artifacts\raw_data.csv')
-    return amazon_data
+    amazon_data = pd.read_csv(r'artifacts/raw_data.csv')
+    return render_template("amazon.html",tables= [amazon_data.to_html()],titles= [''])
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
