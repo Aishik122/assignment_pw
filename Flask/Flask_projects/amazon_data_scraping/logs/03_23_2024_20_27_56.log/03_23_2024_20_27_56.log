@@ -1,0 +1,4 @@
+[2024-03-23 20:27:56,374] 96 werkzeug - WARNING  * Debugger is active!
+[2024-03-23 20:27:56,378] 96 werkzeug - INFO  * Debugger PIN: 114-575-417
+[2024-03-23 20:28:00,106] 96 werkzeug - INFO 127.0.0.1 - - [23/Mar/2024 20:28:00] "GET /amazon HTTP/1.1" 200 -
+[2024-03-23 20:30:41,410] 96 werkzeug - INFO  * Detected change in 'D:\\PW_Data_science\\Flask\\Flask_projects\\amazon_data_scraping\\.amazon\\src\\component\\data_ingestion.py', reloading

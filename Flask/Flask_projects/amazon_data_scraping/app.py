@@ -2,6 +2,14 @@ from flask import Flask, request, render_template,redirect
 import pandas as pd
 from src.component.data_ingestion import DataIngestion
 
+
+# preview Data 
+df=pd.read_csv(r'artifacts\raw_data.csv',encoding="unicode_escape")
+headers = df.columns 
+records = df.to_records(index=False)
+result = list(records)
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -23,14 +31,8 @@ def process_link():
 
 
 @app.route('/amazon')
-def amazon():
-    amazon_data = read_amazon_data()
-    return render_template('amazon.html', amazon_data=amazon_data)
-
-def read_amazon_data():
-    # Read the CSV file
-    amazon_data = pd.read_csv(r'artifacts/raw_data.csv')
-    return render_template("amazon.html",tables= [amazon_data.to_html()],titles= [''])
+def amazom_data():
+    return render_template('amazon.html',headings = headers , data = result )
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
