@@ -3,11 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Weather Information</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .nested {
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Current Weather</h1>
-    <p>Temperature: {{ weather.temperature }}</p>
-    <p>Description: {{ weather.description }}</p>
+    <h1>Weather Information for Kolkata</h1>
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        {% for key, value in weather_data.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>
+                    {% if value is mapping %}
+                        <ul class="nested">
+                            {% for k, v in value.items() %}
+                                <li>{{ k }}: {{ v }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% elif value is iterable and value is not string %}
+                        <ul class="nested">
+                            {% for item in value %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        {{ value }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <script>
+        var toggler = document.getElementsByClassName("caret");
+        var i;
+
+        for (i = 0; i < toggler.length; i++) {
+            toggler[i].addEventListener("click", function() {
+                this.parentElement.querySelector(".nested").classList.toggle("active");
+                this.classList.toggle("caret-down");
+            });
+        }
+    </script>
 </body>
 </html>
