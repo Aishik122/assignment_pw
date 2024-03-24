@@ -1,4 +1,0 @@
-[2024-03-05 20:10:15,396] 96 werkzeug - WARNING  * Debugger is active!
-[2024-03-05 20:10:15,399] 96 werkzeug - INFO  * Debugger PIN: 114-575-417
-[2024-03-05 20:11:07,636] 96 werkzeug - INFO 127.0.0.1 - - [05/Mar/2024 20:11:07] "GET / HTTP/1.1" 200 -
-[2024-03-05 20:11:07,706] 96 werkzeug - INFO 127.0.0.1 - - [05/Mar/2024 20:11:07] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
