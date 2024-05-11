@@ -61,7 +61,7 @@ class DataIngestion:
                 available = "Not Available"
             return available
 
-        HEADERS = {'User-Agent': 'Your User-Agent String', 'Accept-Language': 'en-US, en;q=0.5'}
+        HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36', 'Accept-Language': 'en-US, en;q=0.5'}
         d = {"title":[], "price":[], "rating":[], "reviews":[], "availability":[]}
 
         k = nums_page
