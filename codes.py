@@ -1,5 +1,5 @@
 Q: How would you create a basic Flask route that displays "Hello, World!" on the homepage?
-ans:-  ```python
+ans:-  
 from flask import Flask
 
 app = Flask(__name__)
@@ -10,10 +10,10 @@ def hello_world():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 
 4. **Return a response:** After processing the form data, you can return a response to the user. This could be a simple message indicating success, or it could be a redirect to another page.
-```python
+
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
@@ -30,11 +30,11 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 This example defines a route `'/'` that handles both GET and POST requests. If the request method is POST, it will retrieve the values from the form using the `request.form` object. You can then process these values as needed and send a response. If the request method is GET, it will render the template `index.html`, which should contain the form for submission.
 
 Q: Write a Flask route that accepts a parameter in the URL and displays it on the page.
-ans:- ```python
+ans:- 
 from flask import Flask
 
 app = Flask(__name__)
@@ -45,14 +45,14 @@ def hello_name(name):
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 This code defines a route with a variable part `/<name>`. When a request is made to this route, the value of `name` in the URL will be passed to the `hello_name` function. The function then uses the value of `name` to construct the message and return it as a response.
 
 Q: Describe the process of connecting a Flask app to a SQLite database using SQLAlchemy.
 ans:-  You can connect a Flask app to a SQLite database using SQLAlchemy by following these steps:
 1. **Install SQLAlchemy:** Install SQLAlchemy using `pip install SQLAlchemy`.
 2. **Configure database connection:** Create a `database.py` module to define your database connection:
-```python
+
 import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -77,9 +77,9 @@ def get_db():
         yield db
     finally:
         db.close()
-```
+
 3. **Define database models:** Define the structure of your data using SQLAlchemy models:
-```python
+
 from sqlalchemy import Column, Integer, String
 from .database import Base
 
@@ -89,10 +89,10 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     email = Column(String, unique=True, index=True)
-```
+
 4. **Initialize the database:** Create the database tables by calling the `Base.metadata.create_all(engine)` function. You can do this in your app's initialization script or in a separate setup function.
 5. **Use database operations in your Flask routes:** In your Flask routes, use `get_db()` to get a database session. You can then use this session to perform database operations like creating, reading, updating, and deleting records.
-```python
+
 from flask import Flask
 from .database import get_db
 
@@ -103,7 +103,7 @@ def get_users():
     db = get_db()
     users = db.query(User).all()
     return [user.name for user in users]
-```
+
 This example defines a route that fetches all users from the database and returns their names.
 
 Q: How would you create a RESTful API endpoint in Flask that returns JSON data?
@@ -115,7 +115,7 @@ ans:-  You can create a RESTful API endpoint in Flask that returns JSON data by 
 5. **Return JSON data:**  In the resource methods, use `jsonify()` to convert Python data structures into JSON format.
 
 Here's an example:
-```python
+
 from flask import Flask
 from flask_restful import Api, Resource
 
@@ -132,7 +132,7 @@ api.add_resource(Todo, "/todos/<int:todo_id>")
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 This code defines a resource class `Todo` that handles GET requests to `"/todos/<int:todo_id>"`. The `get` method retrieves the todo item based on the given id and returns it as a JSON object.
 
 Q: Explain how to use Flask-WTF to create and validate forms in a Flask application.
@@ -143,7 +143,7 @@ ans:-  You can use Flask-WTF to create and validate forms in a Flask application
 4. **Handle validation errors:** If the form fails validation, you can access the errors in the `form.errors` dictionary. You can then display these errors to the user in the appropriate way.
 
 Here's an example:
-```python
+
 from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
@@ -169,20 +169,20 @@ def login():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 This code defines a form class `LoginForm` with two fields, `username` and `password`, both validated using `DataRequired`.  The `login` route handles both GET and POST requests. On POST, it checks the form submission and validation. If successful, it redirects to the `index` route; otherwise, it renders the `login.html` template with the form and potential error messages.
 
 Q: How can you implement file uploads in a Flask application?
 ans:-  You can implement file uploads in a Flask application by following these steps:
 1. **Configure the `MAX_CONTENT_LENGTH`:**  Set the maximum file size allowed by your application by configuring the `MAX_CONTENT_LENGTH` variable in your Flask app's configuration. This prevents large uploads from crashing your application.
-```python
+
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB
-```
+
 2. **Use a form with a file field:**  Use a form with a file field (e.g., `FileField`) to enable users to select files for upload.
 3. **Handle the file upload:** In the route that handles the form submission, access the uploaded file using `request.files`.
 4. **Save the file:**  Save the uploaded file to your server's storage. You can use the `save()` method of the uploaded file object to save it.
 5. **Process the file:** If necessary, you can then process the uploaded file (e.g., resize an image, convert a document to text).
-```python
+
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 
@@ -207,7 +207,7 @@ def upload():
 
 if __name__ == '__main__':
     app.run(debug=True)
-```
+
 This code defines an upload form with a `FileField` and a `SubmitField`.  The `upload` route handles both GET and POST requests. On POST, it validates the form and saves the uploaded file to the specified directory if it is valid. It then redirects back to the `upload` route.
 
 Q: Describe the steps to create a Flask blueprint and why you might use one.
@@ -215,7 +215,7 @@ ans:-  You can create a Flask blueprint by following these steps:
 1. **Create a blueprint object:** Create a new instance of `Blueprint` by passing the name of the blueprint and its URL prefix.
 2. **Define routes and views:**  Add your routes and associated view functions to the blueprint object using the `route` decorator.
 3. **Register the blueprint:** Register the blueprint with your Flask app using the `register_blueprint` method.
-```python
+
 from flask import Blueprint
 
 auth = Blueprint('auth', __name__, url_prefix='/auth')
@@ -230,7 +230,7 @@ def register():
 
 app = Flask(__name__)
 app.register_blueprint(auth)
-```
+
 This code defines a blueprint `auth` with a URL prefix of `/auth`. Two routes, `/login` and `/register`, are added to the blueprint. Finally, the blueprint is registered with the Flask app.
 
 You might use blueprints for several reasons:
@@ -243,14 +243,14 @@ Q: How would you deploy a Flask application to a production server using Gunicor
 ans:-  You can deploy a Flask application to a production server using Gunicorn and Nginx by following these steps:
 1. **Install Gunicorn and Nginx:** Install Gunicorn and Nginx on your server.
 2. **Create a Gunicorn configuration file:** Create a configuration file (e.g., `gunicorn.conf.py`) to configure Gunicorn. This file should specify the Flask application to run, the number of worker processes, and other settings.
-```python
+
 # gunicorn.conf.py
 bind = '0.0.0.0:8000'
 workers = 3
 worker_class = 'uvicorn.workers.UvicornWorker'
-```
+
 3. **Create an Nginx configuration file:** Create a configuration file (e.g., `nginx.conf`) to configure Nginx. This file should define the virtual host for your application, specifying the port to listen on, the location of your static files, and the Gunicorn server to proxy requests to.
-```nginx
+nginx
 # nginx.conf
 server {
     listen 80;
@@ -264,13 +264,13 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
-```
+
 4. **Start Gunicorn:** Start Gunicorn using the command `gunicorn -c gunicorn.conf.py your_app:app`. This will start the Gunicorn server, listening on the specified port.
 5. **Start Nginx:** Start Nginx using the command `nginx -c nginx.conf`. This will start the Nginx server, listening on port 80 and proxying requests to the Gunicorn server.
 6. **Test the deployment:** Access your application in a web browser using your domain name.
 
 Q: Make a fully functional web application using flask, Mangodb. Signup,Signin page.And after successfully login.Say hello Geeks message at webpage.
-ans:-  ```python
+ans:-  
 from flask import Flask, render_template, redirect, url_for, request, session
 from flask_pymongo import PyMongo
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -335,7 +335,7 @@ def logout():
 
 if __name__ == "__main__":
     app.run(debug=True)
-```
+
 This code defines a Flask application that uses MongoDB to store user data. The app has three routes: `/`, `/signup`, and `/login`.  
 - The `/` route checks if the user is logged in. If so, it displays the "Hello Geeks!" message. Otherwise, it redirects to the `/login` route.
 - The `/signup` route handles user registration. It checks if the username is already taken, hashes the password, and inserts the user into the database.
@@ -343,7 +343,7 @@ This code defines a Flask application that uses MongoDB to store user data. The 
 - The `/logout` route logs the user out by removing their session data.
 
 **Templates (signup.html, login.html):**
-```html
+html
 <!DOCTYPE html>
 <html>
 <head>
@@ -358,8 +358,8 @@ This code defines a Flask application that uses MongoDB to store user data. The 
     </form>
 </body>
 </html>
-```
-```html
+
+html
 <!DOCTYPE html>
 <html>
 <head>
@@ -374,12 +374,12 @@ This code defines a Flask application that uses MongoDB to store user data. The 
     </form>
 </body>
 </html>
-```
+
 
 
 Q: Create a database name Travel_Planner in mysql, and create a table name bookings in that which having attributes (user_id INT, flight_id INT, hotel_id INT, activity_id INT,booking_date DATE).fill with some dummy value.Now you have to read the content of this table using pandas as dataframe.Show the output.
 ans:- 
-```python
+
 import pandas as pd
 import mysql.connector
 
@@ -428,7 +428,7 @@ print(df)
 # Close the cursor and connection
 cursor.close()
 mydb.close()
-```
+
 This code first establishes a connection to your MySQL database. Then, it creates the `bookings` table with the specified attributes and inserts some dummy data. Finally, it uses `pd.DataFrame` to read the data from the table into a DataFrame and prints the output.
 
 
@@ -463,7 +463,7 @@ ans:-
 4
 7Q: Write a program for VIBGYOR Spectrum based on their Wavelength using. Wavelength Range:
 ans:- 
-```python
+
 colors = {
     "Violet": "400.0-440.0",
     "Indigo": "440.0-460.0",
@@ -477,7 +477,7 @@ colors = {
 for color, wavelength in colors.items():
     print(f"{color} - {wavelength}")
 
-```
+
 
 Q: Consider the gravitational interactions between the Earth, Moon, and Sun in our solar system. Given:
 mass_earth = 5.972e24 # Mass of Earth in kilograms
@@ -491,7 +491,7 @@ Tasks:
 * Compare the calculated forces to determine which gravitational force is stronger.
 * Explain which celestial body (Earth or Moon) is more attracted to the other based on the comparison.
 ans:- 
-```python
+
 import math
 
 # Constants
@@ -522,7 +522,7 @@ else:
 
 # Explain the attraction
 print("The Earth is more attracted to the Sun because the gravitational force between them is much stronger due to the larger mass of the Sun and the greater distance between Earth and the Sun compared to the Moon and Earth.")
-```Q: Question 1.5. tuple1=(10,20,"Apple",3.4,'a',["master","j"],("sita","geeta",22),[{"roll_no":13},{"name":"Navneet"}] )
+Q: Question 1.5. tuple1=(10,20,"Apple",3.4,'a',["master","j"],("sita","geeta",22),[{"roll_no":13},{"name":"Navneet"}] )
 ans:- a) print(len(tuple1))
 ans:- b) print(tuple1[ -1][ -1]["name"])
 ans:- c) fetch the value of roll_no from this tuple.
@@ -554,14 +554,14 @@ Q: 1.12. Write the programs for the following:
 | percentage < 30 | Reappear |
 ans:- 
 Q: Define a Python module named constants.py containing constants like pi and the speed of light.
-ans:-  ```python
+ans:-  
 # constants.py
 pi = 3.14159
 speed_of_light = 299792458
-```
+
 
 Q: Write a Python module named calculator.py containing functions for addition, subtraction, multiplication, and division.
-ans:-  ```python
+ans:-  
 # calculator.py
 def add(x, y):
   """Returns the sum of two numbers."""
@@ -581,11 +581,11 @@ def divide(x, y):
     return "Division by zero error!"
   else:
     return x / y
-```
+
 
 Q: Implement a Python package structure for a project named ecommerce, containing modules for product management and order processing.
 ans:- 
-```
+
 ecommerce/
 ├── __init__.py
 ├── product_management/
@@ -602,7 +602,7 @@ ecommerce/
     ├── __init__.py
     ├── database.py
     └── logger.py
-```
+
 * **ecommerce/__init__.py:** This file is the entry point for the package and can be used to define global variables or functions used throughout the package.
 * **product_management/__init__.py:** This file acts as a placeholder to indicate that this directory is a Python package.
 * **product_management/product.py:** This module defines the Product class and its attributes and methods for managing product data.
@@ -617,7 +617,7 @@ ecommerce/
 * **utils/logger.py:** This module provides functions for logging events and debugging information.
 
 Q: Implement a Python module named string_utils.py containing functions for string manipulation, such as reversing and capitalizing strings.
-ans:- ```python
+ans:- 
 # string_utils.py
 def reverse_string(text):
   """Reverses a given string."""
@@ -626,10 +626,10 @@ def reverse_string(text):
 def capitalize_string(text):
   """Capitalizes the first letter of each word in a string."""
   return text.title()
-```
+
 
 Q: Write a Python module named file_operations.py with functions for reading, writing, and appending data to a file.
-ans:- ```python
+ans:- 
 # file_operations.py
 def read_file(file_path):
   """Reads the contents of a file."""
@@ -646,10 +646,10 @@ def append_file(file_path, data):
   """Appends data to a file."""
   with open(file_path, "a") as file:
     file.write(data)
-```
+
 
 Q: Write a Python program to create a text file named "employees.txt" and write the details of employees, including their name, age, and salary, into the file.
-ans:- ```python
+ans:- 
 # employee_details.py
 def create_employee_file():
   """Creates a text file named 'employees.txt' and writes employee details."""
@@ -666,10 +666,10 @@ def create_employee_file():
 
 if __name__ == "__main__":
   create_employee_file()
-```
+
 
 Q: Develop a Python script that opens an existing text file named "inventory.txt" in read mode and displays the contents of the file line by line.
-ans:- ```python
+ans:- 
 # inventory_reader.py
 def read_inventory_file():
   """Reads the contents of 'inventory.txt' line by line."""
@@ -680,10 +680,10 @@ def read_inventory_file():
 
 if __name__ == "__main__":
   read_inventory_file()
-```
+
 
 Q: Create a Python script that reads a text file named "expenses.txt" and calculates the total amount spent on various expenses listed in the file.
-ans:- ```python
+ans:- 
 # expenses_calculator.py
 def calculate_total_expenses():
   """Calculates the total expenses from 'expenses.txt'."""
@@ -697,10 +697,10 @@ def calculate_total_expenses():
 
 if __name__ == "__main__":
   calculate_total_expenses()
-```
+
 
 Q: Create a Python program that reads a text file named "paragraph.txt" and counts the occurrences of each word in the paragraph, displaying the results in alphabetical order.
-ans:- ```python
+ans:- 
 # paragraph_word_count.py
 import collections
 
@@ -719,5 +719,5 @@ def count_words_in_paragraph():
 
 if __name__ == "__main__":
   count_words_in_paragraph()
-```
+
 
